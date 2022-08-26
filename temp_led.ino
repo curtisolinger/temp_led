@@ -24,8 +24,8 @@ void loop() {
   // a period which the LED is set to HIGH.
   sensorVal = map(sensorVal, 0, 1023, 0, 255);
 
-  Serial.print(" ,");
-  Serial.print(sensorVal);
+  Serial.print(", ");
+  Serial.println(sensorVal);
 
   // Turn on the LED, attached to ledPin, with a duty cycle of sensorVal.
   analogWrite(ledPin, sensorVal);
