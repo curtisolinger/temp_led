@@ -4,6 +4,8 @@ const int ledPin = 3;
 const int sensorPin = A0;
 
 void setup() {
+  // Open the serial port to print the sensor values
+  Serial.begin(9600);
   // Set the pin to which the LED is attached to OUTPUT.
   pinMode(ledPin, OUTPUT);
   // Set the voltage to zero and thus make sure the LED is off for good measure. 
@@ -15,10 +17,15 @@ void loop() {
   // and store that value in sensorVal
   int sensorVal = analogRead(sensorPin);
 
+  Serial.print(sensorVal);
+
   // map the sensorVal (between 0 and 1023) to a value x \in [0, 255] where x
   // cooresponds to the duty cycle for the LED, i.e. the percent of time during
   // a period which the LED is set to HIGH.
   sensorVal = map(sensorVal, 0, 1023, 0, 255);
+
+  Serial.print(" ,");
+  Serial.print(sensorVal);
 
   // Turn on the LED, attached to ledPin, with a duty cycle of sensorVal.
   analogWrite(ledPin, sensorVal);
